@@ -679,7 +679,7 @@
         window.addEventListener('DOMContentLoaded', async () => {
             try {
                 // Get Rotarians
-                const rotariansResponse = await fetch('YOUR_APPS_SCRIPT_URL?action=getRotarians');
+                const rotariansResponse = await fetch('https://script.google.com/macros/s/AKfycbxdtcvtLAAAqSiXf6YOe2Zx_BSJ2U5Fp2ep4VTvcsv-33Snbz3XHQFcvEz3Nt-eKLXTDA/exec?action=getRotarians');
                 const rotariansText = await rotariansResponse.text();
                 const rotariansMatch = rotariansText.match(/\[\{[\s\S]*\}\]/);
                 
@@ -695,7 +695,7 @@
                 }
                 
                 // Get Grant Limits
-                const limitsResponse = await fetch('YOUR_APPS_SCRIPT_URL?action=getGrantLimits');
+                const limitsResponse = await fetch('https://script.google.com/macros/s/AKfycbxdtcvtLAAAqSiXf6YOe2Zx_BSJ2U5Fp2ep4VTvcsv-33Snbz3XHQFcvEz3Nt-eKLXTDA/exec?action=getGrantLimits');
                 const limitsText = await limitsResponse.text();
                 const limitsMatch = limitsText.match(/\{[^}]*\}/);
                 
@@ -774,7 +774,7 @@
                 sponsorEmail: formData.get('sponsorEmail')
             };
 
-            fetch('YOUR_APPS_SCRIPT_URL', {
+            fetch('https://script.google.com/macros/s/AKfycbxdtcvtLAAAqSiXf6YOe2Zx_BSJ2U5Fp2ep4VTvcsv-33Snbz3XHQFcvEz3Nt-eKLXTDA/exec', {
                 method: 'POST',
                 body: JSON.stringify(data)
             })
