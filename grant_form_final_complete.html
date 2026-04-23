@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotary Community Grant Application</title>
+    <style>
+        :root {
+            --rotary-blue: #003da5;
+            --rotary-yellow: #FFB81C;
+            --text-dark: #1a1a1a;
+            --text-light: #666;
+            --border-light: #e0e0e0;
+            --bg-light: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            height: 100%;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, var(--rotary-blue) 0%, #002d7a 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .page-wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background: white;
+            border-bottom: 4px solid var(--rotary-yellow);
+            padding: 30px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .logo-circle {
+            width: 60px;
+            height: 60px;
+            background: var(--rotary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .logo-circle span {
+            color: var(--rotary-yellow);
+            font-weight: bold;
+            font-size: 24px;
+        }
+        
+        .header-text h1 {
+            color: var(--rotary-blue);
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        
+        .header-text p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+        
+        main {
+            flex: 1;
+            max-width: 1000px;
+            width: 100%;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .intro-section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--rotary-yellow);
+        }
+        
+        .intro-section h2 {
+            color: var(--rotary-blue);
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .intro-section p {
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+        
+        .form-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .form-section {
+            padding: 30px;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .form-section:last-of-type {
+            border-bottom: none;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--rotary-yellow);
+        }
+        
+        .section-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--rotary-blue);
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .section-title {
+            color: var(--rotary-blue);
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .grid.full {
+            grid-template-columns: 1fr;
+        }
+        
+        .grid.three {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+        
+        label .required {
+            color: #e74c3c;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="url"],
+        input[type="date"],
+        input[type="number"],
+        textarea,
+        select {
+            padding: 10px 12px;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="url"]:focus,
+        input[type="date"]:focus,
+        input[type="number"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--rotary-blue);
+            box-shadow: 0 0 0 3px rgba(0, 61, 165, 0.1);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 8px;
+        }
+        
+        .radio-item,
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        input[type="radio"],
+        input[type="checkbox"] {
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--rotary-blue);
+        }
+        
+        .hint {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+        
+        .info-box {
+            background: var(--bg-light);
+            border-left: 4px solid var(--rotary-yellow);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .info-box strong {
+            color: var(--rotary-blue);
+        }
+        
+        #schoolFields {
+            background: #f0f5ff;
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 15px;
+            border-left: 4px solid var(--rotary-blue);
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            padding: 30px;
+            background: var(--bg-light);
+        }
+        
+        button {
+            padding: 12px 40px;
+            font-size: 15px;
+            font-weight: 600;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        button[type="submit"] {
+            background: var(--rotary-yellow);
+            color: var(--rotary-blue);
+            min-width: 200px;
+        }
+        
+        button[type="submit"]:hover {
+            background: #ffc426;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 184, 28, 0.3);
+        }
+        
+        button[type="reset"] {
+            background: white;
+            color: var(--text-light);
+            border: 1px solid var(--border-light);
+        }
+        
+        button[type="reset"]:hover {
+            background: var(--bg-light);
+        }
+        
+        .success-message {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .error-message {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .validation-error {
+            border-color: #e74c3c !important;
+        }
+        
+        .field-error {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+        
+        footer {
+            background: var(--rotary-blue);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        footer p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .grid,
+            .grid.three {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .section-number {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .header-text h1 {
+                font-size: 24px;
+            }
+            
+            main {
+                margin: 20px auto;
+            }
+            
+            button[type="submit"] {
+                min-width: auto;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <header>
+            <div class="header-content">
+                <div class="logo-circle">
+                    <span>♦</span>
+                </div>
+                <div class="header-text">
+                    <h1>Rotary Community Grant</h1>
+                    <p>Rotary Club of Livermore Valley</p>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="intro-section">
+                <h2>Grant Application</h2>
+                <p>Thank you for your interest in our community grant program. Please complete this application to apply for funding for your organization's project.</p>
+                <p><strong>Application Deadline:</strong> Last Friday of April (Spring) or October (Fall)</p>
+            </div>
+
+            <form id="grantForm" class="form-container" onsubmit="submitForm(event)">
+                <!-- Section 1: Organization Information -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <div class="section-number">1</div>
+                        <h2 class="section-title">Organization Information</h2>
+                    </div>
+                    
+                    <div class="grid">
+                        <div class="form-group full-width">
+                            <label for="period">Application Period <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="spring" name="period" value="Spring" required>
+                                    <label for="spring" style="margin: 0;">Spring</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="fall" name="period" value="Fall" required>
+                                    <label for="fall" style="margin: 0;">Fall</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="orgName">Organization Name <span class="required">*</span></label>
+                            <input type="text" id="orgName" name="orgName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactName">Contact Person <span class="required">*</span></label>
+                            <input type="text" id="contactName" name="contactName" required>
+                        </div>
+                    </div>
+
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="contactTitle">Title</label>
+                            <input type="text" id="contactTitle" name="contactTitle">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="email">Email <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="fax">Fax</label>
+                            <input type="tel" id="fax" name="fax">
+                        </div>
+                    </div>
+
+                    <div class="grid full">
+                        <div class="form-group">
+                            <label for="address">Address <span class="required">*</span></label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                    </div>
+
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="website">Website</label>
+                            <input type="url" id="website" name="website">
+                        </div>
+                        <div class="form-group">
+                            <label for="taxId">Federal Tax ID</label>
+                            <input type="text" id="taxId" name="taxId">
+                        </div>
+                    </div>
+
+                    <div class="grid full">
+                        <div class="form-group">
+                            <label for="orgType">Type of Organization <span class="required">*</span></label>
+                            <textarea id="orgType" name="orgType" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="incorp">Where/When Incorporated</label>
+                            <input type="text" id="incorp" name="incorp">
+                        </div>
+                        <div class="form-group">
+                            <label for="prevGrants">Previous Grants</label>
+                            <input type="text" id="prevGrants" name="prevGrants">
+                        </div>
+                    </div>
+
+                    <div class="grid full">
+                        <div class="form-group">
+                            <label for="hasBoard">Board of Directors <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="yes" name="hasBoard" value="Yes" required>
+                                    <label for="yes" style="margin: 0;">Yes</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="no" name="hasBoard" value="No" required>
+                                    <label for="no" style="margin: 0;">No</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Project Information -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <div class="section-number">2</div>
+                        <h2 class="section-title">Project Details</h2>
+                    </div>
+
+                    <div class="grid full">
+                        <div class="form-group">
+                            <label for="projectTitle">Project Title <span class="required">*</span></label>
+                            <input type="text" id="projectTitle" name="projectTitle" required>
+                        </div>
+                    </div>
+
+                    <div class="grid full">
+                        <div class="form-group">
+                            <label for="projectDesc">Project Description <span class="required">*</span></label>
+                            <textarea id="projectDesc" name="projectDesc" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="location">Location <span class="required">*</span></label>
+                            <input type="text" id="location" name="location" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Amount Requested <span class="required">*</span></label>
+                            <input type="number" id="amountField" name="amount" placeholder="$500 - $1000" required>
+                        </div>
+                    </div>
+
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="startDate">Start Date <span class="required">*</span></label>
+                            <input type="date" id="startDate" name="startDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="endDate">End Date <span class="required">*</span></label>
+                            <input type="date" id="endDate" name="endDate" required>
+                        </div>
+                    </div>
+
+                    <div class="grid full">
+                        <div class="form-group">
+                            <label for="payableTo">Check Payable To <span class="required">*</span></label>
+                            <input type="text" id="payableTo" name="payableTo" required>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        ⏰ <strong>Meeting Attendance Required:</strong> Recipients are expected to give a short presentation at a club meeting (Tuesdays, 8:15-9:30 AM). This is an important part of the grant agreement.
+                    </div>
+                </div>
+
+                <!-- Section 3: School District (Conditional) -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <div class="section-number">3</div>
+                        <h2 class="section-title">School District Involvement</h2>
+                    </div>
+
+                    <div class="grid full">
+                        <div class="form-group">
+                            <label for="isSchool">Does this project involve a school or school district?</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="isSchool" name="isSchool">
+                                    <label for="isSchool" style="margin: 0;">Yes, school approval required</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="schoolFields" style="display: none;">
+                        <div class="grid">
+                            <div class="form-group">
+                                <label for="schoolApprover">School Approval By</label>
+                                <input type="text" id="schoolApprover" name="schoolApprover" placeholder="Administrator/Principal name">
+                            </div>
+                            <div class="form-group">
+                                <label for="schoolEmail">School Contact Email</label>
+                                <input type="email" id="schoolEmail" name="schoolEmail" placeholder="school.admin@email.com">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: Rotarian Sponsor -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <div class="section-number">4</div>
+                        <h2 class="section-title">Rotarian Sponsor</h2>
+                    </div>
+
+                    <div class="grid full">
+                        <div class="form-group">
+                            <label for="sponsorDropdown">Select Rotarian Sponsor <span class="required">*</span></label>
+                            <select id="sponsorDropdown" name="sponsorDropdown" required>
+                                <option value="">-- Choose a Rotarian or Add Custom --</option>
+                                <option value="custom">Add Custom Sponsor</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="sponsorName">Sponsor Name <span class="required">*</span></label>
+                            <input type="text" id="sponsorName" name="sponsorName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sponsorEmail">Sponsor Email <span class="required">*</span></label>
+                            <input type="email" id="sponsorEmail" name="sponsorEmail" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5: Signature -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <div class="section-number">5</div>
+                        <h2 class="section-title">Signature</h2>
+                    </div>
+
+                    <div class="info-box">
+                        By signing below, I certify that the information provided in this application is accurate and complete.
+                    </div>
+
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="signature">Applicant Signature (Typed Name) <span class="required">*</span></label>
+                            <input type="text" id="signature" name="signature" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signatureDate">Date <span class="required">*</span></label>
+                            <input type="date" id="signatureDate" name="signatureDate" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success/Error Messages -->
+                <div class="success-message" id="successMessage">
+                    ✓ Your application has been submitted successfully! You will receive a confirmation email shortly.
+                </div>
+                <div class="error-message" id="errorMessage"></div>
+
+                <!-- Submit Buttons -->
+                <div class="form-actions">
+                    <button type="submit">Submit Application</button>
+                    <button type="reset">Clear Form</button>
+                </div>
+            </form>
+        </main>
+
+        <footer>
+            <p><strong>Rotary Club of Livermore Valley</strong></p>
+            <p>Community Grants Committee</p>
+            <p style="margin-top: 10px; font-size: 12px;">Questions? Contact your local Rotary Club</p>
+        </footer>
+    </div>
+
+    <script>
+        // Load rotarians and grant limits
+        window.addEventListener('DOMContentLoaded', async () => {
+            try {
+                // Get Rotarians
+                const rotariansResponse = await fetch('YOUR_APPS_SCRIPT_URL?action=getRotarians');
+                const rotariansText = await rotariansResponse.text();
+                const rotariansMatch = rotariansText.match(/\[\{[\s\S]*\}\]/);
+                
+                if (rotariansMatch) {
+                    const rotarians = JSON.parse(rotariansMatch[0]);
+                    const sponsorDropdown = document.getElementById('sponsorDropdown');
+                    rotarians.forEach(rotarian => {
+                        const option = document.createElement('option');
+                        option.value = JSON.stringify(rotarian);
+                        option.textContent = rotarian.name;
+                        sponsorDropdown.insertBefore(option, sponsorDropdown.querySelector('[value="custom"]'));
+                    });
+                }
+                
+                // Get Grant Limits
+                const limitsResponse = await fetch('YOUR_APPS_SCRIPT_URL?action=getGrantLimits');
+                const limitsText = await limitsResponse.text();
+                const limitsMatch = limitsText.match(/\{[^}]*\}/);
+                
+                if (limitsMatch) {
+                    const limits = JSON.parse(limitsMatch[0]);
+                    const amountField = document.getElementById('amountField');
+                    amountField.min = limits.min;
+                    amountField.max = limits.max;
+                    amountField.placeholder = `$${limits.min} - $${limits.max}`;
+                }
+            } catch (err) {
+                console.error('Error loading data:', err);
+            }
+        });
+
+        // Handle sponsor dropdown
+        const sponsorDropdown = document.getElementById('sponsorDropdown');
+        sponsorDropdown.addEventListener('change', () => {
+            if (sponsorDropdown.value === 'custom') {
+                document.getElementById('sponsorName').value = '';
+                document.getElementById('sponsorEmail').value = '';
+            } else if (sponsorDropdown.value) {
+                try {
+                    const rotarian = JSON.parse(sponsorDropdown.value);
+                    document.getElementById('sponsorName').value = rotarian.name;
+                    document.getElementById('sponsorEmail').value = rotarian.email;
+                } catch (e) {
+                    console.error('Error parsing rotarian:', e);
+                }
+            }
+        });
+
+        // Handle school checkbox
+        document.getElementById('isSchool').addEventListener('change', (e) => {
+            document.getElementById('schoolFields').style.display = e.target.checked ? 'block' : 'none';
+            if (!e.target.checked) {
+                document.getElementById('schoolApprover').value = '';
+                document.getElementById('schoolEmail').value = '';
+            }
+        });
+
+        // Form submission
+        function submitForm(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+
+            const data = {
+                period: formData.get('period'),
+                orgName: formData.get('orgName'),
+                address: formData.get('address'),
+                website: formData.get('website'),
+                contactName: formData.get('contactName'),
+                contactTitle: formData.get('contactTitle'),
+                phone: formData.get('phone'),
+                fax: formData.get('fax'),
+                email: formData.get('email'),
+                orgType: formData.get('orgType'),
+                incorp: formData.get('incorp'),
+                taxId: formData.get('taxId'),
+                hasBoard: formData.get('hasBoard'),
+                prevGrants: formData.get('prevGrants'),
+                projectTitle: formData.get('projectTitle'),
+                projectDesc: formData.get('projectDesc'),
+                location: formData.get('location'),
+                amount: formData.get('amount'),
+                startDate: formData.get('startDate'),
+                endDate: formData.get('endDate'),
+                payableTo: formData.get('payableTo'),
+                signature: formData.get('signature'),
+                signatureDate: formData.get('signatureDate'),
+                isSchool: formData.get('isSchool') ? true : false,
+                schoolApprover: formData.get('schoolApprover'),
+                schoolEmail: formData.get('schoolEmail'),
+                sponsorName: formData.get('sponsorName'),
+                sponsorEmail: formData.get('sponsorEmail')
+            };
+
+            fetch('YOUR_APPS_SCRIPT_URL', {
+                method: 'POST',
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.result === 'success') {
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('errorMessage').style.display = 'none';
+                    form.reset();
+                    window.scrollTo(0, 0);
+                } else {
+                    throw new Error(result.message);
+                }
+            })
+            .catch(error => {
+                document.getElementById('errorMessage').textContent = 'Error: ' + error.message;
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('successMessage').style.display = 'none';
+            });
+        }
+    </script>
+</body>
+</html>
