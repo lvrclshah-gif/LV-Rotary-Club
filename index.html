@@ -651,7 +651,7 @@
         minLength: (value, min) => value && value.trim().length >= min,
         email: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
         phone: (value) => /^[\d\s\-\+\(\)]{10,}$/.test(value.replace(/\D/g, '')),
-        url: (value) => !value || /^https?:\/\/.+/.test(value),
+        url: (value) => !value || /^([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}|https?:\/\/.+/.test(value),
         min: (value, min) => !value || parseFloat(value) >= min,
         max: (value, max) => !value || parseFloat(value) <= max
     };
