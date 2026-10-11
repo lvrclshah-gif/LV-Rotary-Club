@@ -352,7 +352,7 @@
 
                 <div class="form-group full-width">
                     <label>Website</label>
-                    <input type="url" name="website">
+                    <input type="text" id="website" name="website" placeholder="example.com or https://example.com">
                     <div class="error-message" id="websiteError"></div>
                 </div>
 
@@ -737,7 +737,21 @@
     // Form submission
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
+//Lisa added - website validation
+        // Form submission
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Auto-format website value if entered
+    let websiteInput = document.getElementById('website').value.trim();
+    if (websiteInput !== "" && !websiteInput.startsWith("http://") && !websiteInput.startsWith("https://")) {
+        websiteInput = "https://" + websiteInput;
+        document.getElementById('website').value = websiteInput;
+    }
 
+    // Validate all fields
+    let isFormValid = true;
+//Lisa add ended website validation
         // Validate all fields
         let isFormValid = true;
         for (const fieldName in validations) {
