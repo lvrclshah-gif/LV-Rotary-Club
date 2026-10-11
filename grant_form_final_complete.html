@@ -470,7 +470,7 @@
                     <div class="grid">
                         <div class="form-group">
                             <label for="website">Website</label>
-                            <input type="url" id="website" name="website">
+                            <input type="text" id="website" name="website">
                         </div>
                         <div class="form-group">
                             <label for="taxId">Federal Tax ID</label>
@@ -739,10 +739,14 @@
 
         // Form submission
         function submitForm(event) {
-            event.preventDefault();
+            event.preventDefault();            
+            let websiteInput = document.getElementById('website').value.trim();
+                if (websiteInput !== "" && !websiteInput.startsWith("http://") && !websiteInput.startsWith("https://")) {
+                websiteInput = "https://" + websiteInput;
+                document.getElementById('website').value = websiteInput; // updates the field visually too
+                }
             const form = event.target;
             const formData = new FormData(form);
-
             const data = {
                 period: formData.get('period'),
                 orgName: formData.get('orgName'),
