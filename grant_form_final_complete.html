@@ -743,7 +743,7 @@
             let websiteInput = document.getElementById('website').value.trim();
                 if (websiteInput !== "" && !websiteInput.startsWith("http://") && !websiteInput.startsWith("https://")) {
                 websiteInput = "https://" + websiteInput;
-                document.getElementById('website').value = websiteInput; // updates the field visually too
+                document.getElementById('website').value = websiteInput;
                 }
             const form = event.target;
             const formData = new FormData(form);
